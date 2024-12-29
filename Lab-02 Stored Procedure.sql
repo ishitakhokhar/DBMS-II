@@ -145,7 +145,7 @@ SELECT * FROM PERSON
 EXEC PR_PERSON_INSERT 'NEHA','TRIVEDI',18000,'2014-02-20',3,15
 
 --2
---Department, Designation & Person Table’s SELECTBYPRIMARYKEY
+--Department, Designation & Person Tableâ€™s SELECTBYPRIMARYKEY
 CREATE OR ALTER PROCEDURE PR_GETDEPARTMENTBYID
 	@DEPARTMENTID	INT
 		AS
@@ -168,7 +168,7 @@ CREATE OR ALTER PROCEDURE PR_GETPERSONBYID
 		END
 
 --3
---Department, Designation & Person Table’s (If foreign key is available then do write join and take columns on select list)
+--Department, Designation & Person Tableâ€™s (If foreign key is available then do write join and take columns on select list)
 CREATE OR ALTER PROCEDURE PR_GETBYFOREGINKEY
 	AS
 	BEGIN
@@ -177,7 +177,15 @@ CREATE OR ALTER PROCEDURE PR_GETBYFOREGINKEY
 		INNER JOIN DEPARTMENT ON PERSON.DEPARTMENTID=DEPARTMENT.DEPARTMENTID 
 	END
 
---4--Create a Procedure that shows details of the first 3 persons.CREATE OR ALTER PROCEDURE PR_PERSON_TOPDETAIL	AS	BEGIN		SELECT TOP 3 PERSONID,FIRSTNAME,LASTNAME,SALARY,JOININGDATE,PERSON.DEPARTMENTID FROM PERSON	END--Part – B
+--4
+--Create a Procedure that shows details of the first 3 persons.
+CREATE OR ALTER PROCEDURE PR_PERSON_TOPDETAIL
+	AS
+	BEGIN
+		SELECT TOP 3 PERSONID,FIRSTNAME,LASTNAME,SALARY,JOININGDATE,PERSON.DEPARTMENTID FROM PERSON
+	END
+
+--Part â€“ B
 --5
 --Create a Procedure that takes the department name as input and returns a table with all workers working in that department.
 CREATE  OR ALTER  PROCEDURE PR_DEPARTMNET_NAME
@@ -189,7 +197,7 @@ CREATE  OR ALTER  PROCEDURE PR_DEPARTMNET_NAME
 		END
 
 --6
---Create Procedure that takes department name & designation name as input and returns a table with worker’s first name, salary, joining date & department name.
+--Create Procedure that takes department name & designation name as input and returns a table with workerâ€™s first name, salary, joining date & department name.
 CREATE OR ALTER PROCEDURE PR_DESIGNATION_NAME
 	@DEPARTMENTNAME	VARCHAR(100),
 	@DESIGNATIONNAME	VARCHAR(100)
@@ -220,7 +228,16 @@ CREATE OR ALTER PROCEDURE PR_MIN_MAX_SALARY
 		GROUP BY DEPARTMENTNAME 
 	END
 
---9--Create Procedure which displays designation wise average & total salaries.CREATE OR ALTER PROCEDURE PR_AVG_TOTAL_SALARY	AS	BEGIN		SELECT AVG(SALARY),AVG(SALARY) FROM PERSON JOIN DESIGNATION ON PERSON.DESIGNATIONID=DESIGNATION.DESIGNATIONID		GROUP BY DESIGNATIONNAME	END--Part – C
+--9
+--Create Procedure which displays designation wise average & total salaries.
+CREATE OR ALTER PROCEDURE PR_AVG_TOTAL_SALARY
+	AS
+	BEGIN
+		SELECT AVG(SALARY),AVG(SALARY) FROM PERSON JOIN DESIGNATION ON PERSON.DESIGNATIONID=DESIGNATION.DESIGNATIONID
+		GROUP BY DESIGNATIONNAME
+	END
+
+--Part â€“ C
 --10
 --Create Procedure that Accepts Department Name and Returns Person Count.
 CREATE OR ALTER PROCEDURE PR_COUNT_PERSON
@@ -273,4 +290,10 @@ CREATE OR ALTER PROCEDURE PR_WORKERS_DEPARTMENT
 	END
 
 --15
---Create a procedure to retrieve the details of workers in departments where the average salary is above 12000.CREATE OR ALTER PROCEDURE PR_PERSON_SALARY	AS	BEGIN		SELECT AVG(SALARY),DEPARTMENTNAME FROM PERSON JOIN DEPARTMENT ON PERSON.DEPARTMENTID=DEPARTMENT.DEPARTMENTID		GROUP BY DEPARTMENTNAME HAVING AVG(SALARY)>12000	END
+--Create a procedure to retrieve the details of workers in departments where the average salary is above 12000.
+CREATE OR ALTER PROCEDURE PR_PERSON_SALARY
+	AS
+	BEGIN
+		SELECT AVG(SALARY),DEPARTMENTNAME FROM PERSON JOIN DEPARTMENT ON PERSON.DEPARTMENTID=DEPARTMENT.DEPARTMENTID
+		GROUP BY DEPARTMENTNAME HAVING AVG(SALARY)>12000
+	END
