@@ -100,7 +100,7 @@ END
 CLOSE PRODUCT_CURSORDELETE
 DEALLOCATE PRODUCT_CURSORDELETE
 
---Part ñ B
+--Part ‚Äì B
 
 --5
 --Create a cursor Product_CursorUpdate that retrieves all the data from the products table and increases the price by 10%.
@@ -147,9 +147,9 @@ END
 CLOSE PRODUCT_ROUND
 DEALLOCATE PRODUCT_ROUND
 
---Part ñ C
+--Part ‚Äì C
 --7
---Create a cursor to insert details of Products into the NewProducts table if the product is ìLaptopî
+--Create a cursor to insert details of Products into the NewProducts table if the product is ‚ÄúLaptop‚Äù
 --(Note: Create NewProducts table first with same fields as Products table)
 CREATE TABLE NEWPRODUCTS (
  Product_id INT PRIMARY KEY,
